@@ -1,2 +1,2 @@
-jclif-maven-plugin
-==================
+
+JCLIF Codegen Plugin
