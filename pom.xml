@@ -1,5 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	
+	
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.jclif.plugin</groupId>
 	<artifactId>jclif-maven-plugin</artifactId>
@@ -8,6 +10,34 @@
 	<name>jclif-maven-plugin Maven Mojo</name>
 	<url>http://www.jclif.org</url>
 
+	<parent>
+		<groupId>org.sonatype.oss</groupId>
+		<artifactId>oss-parent</artifactId>
+		<version>7</version>
+	</parent>
+
+	<licenses>
+		<license>
+			<name>The Apache Software License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
+	<developers>
+		<developer>
+			<id>stephen.banal</id>
+			<name>Stephen Lou Banal</name>
+			<email>stephen.banal@gmail.com</email>
+		</developer>
+	</developers>
+	
+	<scm>
+		<connection>scm:git:git@github.com:sbanal/jclif-maven-plugin.git</connection>
+		<developerConnection>scm:git:git@github.com:sbanal/jclif-maven-plugin.git</developerConnection>
+		<url>git@github.com:sbanal/jclif-maven-plugin.git</url>
+	</scm>		
+	
 	<dependencies>
 		<dependency>
 			<groupId>org.apache.maven</groupId>
@@ -27,7 +57,8 @@
 		</dependency>
 	</dependencies>
 	
-<!-- 	<build> -->
+	<build>
+		<plugins>
 <!-- 		<plugins> -->
 <!-- 			<plugin> -->
 <!-- 				<artifactId>maven-plugin-plugin</artifactId> -->
@@ -37,6 +68,72 @@
 <!-- 				</configuration> -->
 <!-- 			</plugin> -->
 <!-- 		</plugins> -->
-<!-- 	</build> -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.0</version>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+   			<!-- Needed for artifact release publishing -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-gpg-plugin</artifactId>
+				<version>1.1</version>
+				<executions>
+					<execution>
+						<id>sign-artifacts</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>sign</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+	<profiles>
+		<!-- Needed for artifact release publishing -->
+		<profile>
+			<id>release-sign-artifacts</id>
+			<activation>
+				<property>
+					<name>performRelease</name>
+					<value>true</value>
+				</property>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-gpg-plugin</artifactId>
+						<version>1.1</version>
+						<executions>
+							<execution>
+								<id>sign-artifacts</id>
+								<phase>verify</phase>
+								<goals>
+									<goal>sign</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>cobertura-maven-plugin</artifactId>
+				<version>2.5.2</version>
+			</plugin>
+		</plugins>
+	</reporting>	
 	
 </project>
