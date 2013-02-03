@@ -36,7 +36,7 @@ import org.jclif.plugin.CodeGenerator;
  * 
  * @goal generate-config
  * @requiresProject true
- * @phase process-classes 
+ * @phase package 
  * @configurator include-project-dependencies
  * @requiresDependencyResolution compile+runtime
  */
