@@ -45,24 +45,24 @@ public class JclifCodeGenerator extends AbstractMojo {
 	/**
 	 * Package name of the command handler definitions.
 	 * 
-	 * @parameter	expression="${commandHandlerPackage}" default-value=""
+	 * @parameter	property="commandHandlerPackage" default-value=""
 	 * @required
 	 */
 	private String commandHandlerPackage = "";
 	
 	/**
-	 * @parameter	expression="${applicationName}" 
+	 * @parameter	property="applicationName" 
 	 * @required 
 	 */
 	private String applicationName;
 	
 	/**
-	 * @parameter	expression="${sourceMainDirectory}" default-value="src/main/java"
+	 * @parameter	property="sourceMainDirectory" default-value="src/main/java"
 	 */
 	private String sourceMainDirectory;
 	
 	/**
-	 * @parameter	expression="${targetDirectory}"  default-value="target/classes"
+	 * @parameter	property="targetDirectory"  default-value="target/classes"
 	 */
 	private String targetDirectory;
 	
