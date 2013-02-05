@@ -8,6 +8,7 @@
 	<packaging>maven-plugin</packaging>
 	<version>1.0-SNAPSHOT</version>
 	<name>JCLIF Codegen Plugin</name>
+	<description>This plugin is used to pre-process jclif annotations and generate jclif configuration files.</description>
 	<url>http://www.jclif.org</url>
 
 	<parent>

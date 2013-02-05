@@ -1,0 +1,9 @@
+Building from GitHub
+
+Using Maven
+
+	git clone https://github.com/sbanal/jclif-codegen-plugin.git
+	cd jclif-codegen-plugin
+	mvn clean install
+
+
